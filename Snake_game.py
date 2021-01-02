@@ -97,6 +97,9 @@ while True:
         # pygame.mixer_music('D:\\game_over.mp3')
         pygame.mixer.music.load("game_over.mp3")
         pygame.mixer.music.play()
+        time.sleep(2)
+        pygame.mixer.music.load("game_sound.mp3")
+        pygame.mixer.music.play(1000)
         head.goto(0,0)
         head.direction ="stop"
     # hide the segment 
