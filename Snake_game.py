@@ -5,6 +5,8 @@ import time
 import random
 import pygame
 delay =0.1
+score=0
+high_score=0
 pygame.mixer.init()
 pygame.mixer.music.load("game_sound.mp3")
 pygame.mixer.music.play(1000)
@@ -18,6 +20,15 @@ win.setup(width=900,height=550)
 win.title(" \t!!!SNAKE GAME!!!\t")
 win.bgpic('snake.gif')
 win.tracer(0)
+ 
+# pen 
+pen =turtle.Turtle()
+pen.speed(0)
+pen.color("black")
+pen.penup()
+pen.goto(-360,150)
+pen.hideturtle()
+pen.write("SCORE =0 \nHIGHSCORE =0", move=False, align="left",font=('Arial', 20, 'bold'))
 
 
 
@@ -93,6 +104,8 @@ win.onkeypress(dr.go_left,"a")
 
 while True:
     win.update()
+    # score
+    
     # for chechking for barrier
     if head.xcor()> 450 or head.xcor()<-450 or head.ycor() > 260 or head.ycor() <-260:
         
@@ -111,6 +124,10 @@ while True:
         
     # clear the segment
         segments.clear()
+    # Reset score
+        score=0
+    pen.clear()
+    pen.write(f"SCORE = {score}\nHIGHSCORE={high_score}".format(score,high_score),move=False, align="left",font=('Arial', 20, 'bold'))
     # Collide snake to his segment
     for segment in segments :
         if segment.distance(head) < 20:
@@ -122,6 +139,7 @@ while True:
             
             head.goto(0,0)
             head.direction="stop"
+            
      # hide the segment 
             for segment in segments :
                 segment.goto(1000,1000)
@@ -129,7 +147,10 @@ while True:
         
     # clear the segment
             segments.clear()
-
+    # Reset score
+            score=0
+        pen.clear()
+        pen.write(f"SCORE = {score}\nHIGHSCORE={high_score}".format(score,high_score),move=False, align="left",font=('Arial', 20, 'bold'))
     if head.distance(food) < 20:
         x= random.randint(-430, 430)
         y= random.randint(-250, 250)
@@ -142,10 +163,19 @@ while True:
         new_segments.pencolor("red")
         new_segments.penup()
         segments.append(new_segments)
+        score+=10
+        if score >high_score:
+            high_score = score
+        pen.clear()
+        pen.write(f"SCORE = {score}\nHIGHSCORE={high_score}".format(score,high_score),move=False, align="left",font=('Arial', 20, 'bold'))
+        with open("highscore","w") as f:
+            f.write(str(high_score))
     for index in range(len(segments)-1,0,-1):
         x= segments[(index)-1].xcor()
         y= segments[(index)-1].ycor()
         segments[index].goto(x,y)
+        
+    
     
     if len(segments) > 0 :
         x= head.xcor()
