@@ -4,18 +4,19 @@ import turtle
 import time
 import random
 import pygame
+delay =0.1
 pygame.mixer.init()
 pygame.mixer.music.load("game_sound.mp3")
 pygame.mixer.music.play(1000)
 
+# background image
+# bg = pygame.image.load("snake2.jpg")
 
-delay =0.1
-
-
+# Screen 
 win = turtle.Screen()
 win.setup(width=900,height=550)
 win.title(" \t!!!SNAKE GAME!!!\t")
-win.bgcolor("#1affa3")
+win.bgpic('snake.gif')
 win.tracer(0)
 
 
@@ -29,7 +30,7 @@ head.fillcolor("red")
 head.pencolor("#99004d")
 head.speed(0)
 head.penup()
-head.goto(0,0)
+head.goto(10,10)
 head.direction="stop"
 
 
@@ -42,7 +43,7 @@ food.pencolor("red")
 
 food.speed(0)
 food.penup()
-food.goto(0,0)
+food.goto(0,100)
 
 
 segments =[]
@@ -94,12 +95,13 @@ while True:
     win.update()
     # for chechking for barrier
     if head.xcor()> 450 or head.xcor()<-450 or head.ycor() > 260 or head.ycor() <-260:
-        # pygame.mixer_music('D:\\game_over.mp3')
+        
         pygame.mixer.music.load("game_over.mp3")
         pygame.mixer.music.play()
-        time.sleep(2)
+        time.sleep(1.5)
         pygame.mixer.music.load("game_sound.mp3")
         pygame.mixer.music.play(1000)
+      
         head.goto(0,0)
         head.direction ="stop"
     # hide the segment 
@@ -112,8 +114,12 @@ while True:
     # Collide snake to his segment
     for segment in segments :
         if segment.distance(head) < 20:
+            pygame.mixer.music.load("game_over.mp3")
+            pygame.mixer.music.play()
+            time.sleep(1.5)
+            pygame.mixer.music.load("game_sound.mp3")
+            pygame.mixer.music.play(1000)
             
-            # playsound('D:\\game_over.mp3')
             head.goto(0,0)
             head.direction="stop"
      # hide the segment 
