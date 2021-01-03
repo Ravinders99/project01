@@ -8,7 +8,7 @@ delay =0.1
 score=0
 high_score=0
 pygame.mixer.init()
-pygame.mixer.music.load("game_sound.mp3")
+pygame.mixer.music.load("gta_san_andreas.mp3")
 pygame.mixer.music.play(1000)
 
 # background image
@@ -109,10 +109,10 @@ while True:
     # for chechking for barrier
     if head.xcor()> 450 or head.xcor()<-450 or head.ycor() > 260 or head.ycor() <-260:
         
-        pygame.mixer.music.load("game_over.mp3")
+        pygame.mixer.music.load("game_over_sms.mp3")
         pygame.mixer.music.play()
         time.sleep(1.5)
-        pygame.mixer.music.load("game_sound.mp3")
+        pygame.mixer.music.load("gta_san_andreas.mp3")
         pygame.mixer.music.play(1000)
       
         head.goto(0,0)
@@ -131,10 +131,10 @@ while True:
     # Collide snake to his segment
     for segment in segments :
         if segment.distance(head) < 20:
-            pygame.mixer.music.load("game_over.mp3")
+            pygame.mixer.music.load("game_over_sms.mp3")
             pygame.mixer.music.play()
             time.sleep(1.5)
-            pygame.mixer.music.load("game_sound.mp3")
+            pygame.mixer.music.load("gta_san_andreas.mp3")
             pygame.mixer.music.play(1000)
             
             head.goto(0,0)
