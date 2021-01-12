@@ -3,9 +3,45 @@ import turtle
 import time
 import random
 import pygame
+# For  control
+class Direct:
+    def go_up(self):
+        if head.direction != "down":
+            head.direction = "up"
+    def go_down(self):
+        if head.direction != "up":
+            head.direction = "down"
+    def go_left(self):
+        if head.direction != "right":
+            head.direction = "left"
+    def go_right(self):
+        if head.direction != "left":
+            head.direction = "right" 
+# For move
+class Move():
+    def move(self):
+        if head.direction == "up":
+            y=head.ycor()
+            head.sety(y + 20)
+        if head.direction == "down":
+            y=head.ycor()
+            head.sety(y - 20)
+        if head.direction == "left":
+            x=head.xcor()
+            head.setx(x -20)
+        if head.direction == "right":
+            x=head.xcor()
+            head.setx(x + 20)
+
 delay =0.1
 score=0
-high_score=0
+try:
+    with open('highscore.txt', 'r') as f:
+        high_score = int(f.readline())
+        f.seek(0) 
+        # print(high_score)d
+except:
+    high_score = 0
 pygame.mixer.init()
 pygame.mixer.music.load("./sound/gta_san_andreas.mp3")
 pygame.mixer.music.play(1000)
@@ -43,38 +79,6 @@ food.speed(0)
 food.penup()
 food.goto(0,100)
 segments =[]
-
-# For  control
-class Direct:
-    def go_up(self):
-        if head.direction != "down":
-            head.direction = "up"
-    def go_down(self):
-        if head.direction != "up":
-            head.direction = "down"
-    def go_left(self):
-        if head.direction != "right":
-            head.direction = "left"
-    def go_right(self):
-        if head.direction != "left":
-            head.direction = "right"
-    
-# For move
-class Move():
-    def move(self):
-        if head.direction == "up":
-            y=head.ycor()
-            head.sety(y + 20)
-        if head.direction == "down":
-            y=head.ycor()
-            head.sety(y - 20)
-        if head.direction == "left":
-            x=head.xcor()
-            head.setx(x -20)
-        if head.direction == "right":
-            x=head.xcor()
-            head.setx(x + 20)
-
 mv=Move()
 dr=Direct()
 win.listen()
@@ -82,7 +86,6 @@ win.onkeypress(dr.go_up,"w")
 win.onkeypress(dr.go_right,"d")        
 win.onkeypress(dr.go_down,"s")        
 win.onkeypress(dr.go_left,"a")               
-
 # Main game loop
 while True:
     win.update()
@@ -132,7 +135,7 @@ while True:
         new_segments.pencolor("red")
         new_segments.penup()
         segments.append(new_segments)
-        score+=10
+        score+=19456810
         if score >high_score:
             high_score = score
         pen.clear()
