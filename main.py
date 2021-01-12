@@ -52,21 +52,37 @@ win = turtle.Screen()
 win.setup(width=900,height=550)
 win.title(" \t!!!SNAKE GAME!!!\t")
 win.bgpic('./gif/snake.gif')
+
 win.tracer(0)
 # pen 
 pen =turtle.Turtle()
 pen.speed(0)
 pen.color("black")
 pen.penup()
-pen.goto(-360,150)
+pen.goto(220,150)
+pen.write("SCORE =0 \nHIGHSCORE =0", move=False, align="center",font=('Arial',8, 'bold'))
 pen.hideturtle()
-pen.write("SCORE =0 \nHIGHSCORE =0", move=False, align="left",font=('Arial', 20, 'bold'))
+# Border
+border=turtle.Turtle()
+border.color("black")
+border.penup()
+border.setposition(-450,-275)
+border.speed(0)
+border.pendown()
+for size in range(2):
+    border.fd(650)
+    border.lt(90)
+    border.fd(550)
+    border.lt(90)
+border.hideturtle()
+
+
 # Snake Head
 head = turtle.Turtle()
 head.shape("circle")
 head.fillcolor("red")
 head.pencolor("#99004d")
-head.speed(0)
+head.speed(0.001)
 head.penup()
 head.goto(10,10)
 head.direction="stop"
@@ -91,7 +107,7 @@ while True:
     win.update()
     # score 
     # for chechking for barrier
-    if head.xcor()> 450 or head.xcor()<-450 or head.ycor() > 260 or head.ycor() <-260:       
+    if head.xcor()> 190 or head.xcor()<-450 or head.ycor() > 260 or head.ycor() <-260:       
         pygame.mixer.music.load("./sound/game_over_sms.mp3")
         pygame.mixer.music.play()
         time.sleep(1.5)
@@ -124,7 +140,7 @@ while True:
         pen.clear()
         pen.write(f"SCORE = {score}\nHIGHSCORE={high_score}".format(score,high_score),move=False, align="left",font=('Arial', 20, 'bold'))
     if head.distance(food) < 20:
-        x= random.randint(-430, 430)
+        x= random.randint(-430, 170)
         y= random.randint(-250, 250)
         food.goto(x,y)
         # Add segments 
