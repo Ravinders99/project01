@@ -135,7 +135,7 @@ while True:
         new_segments.pencolor("red")
         new_segments.penup()
         segments.append(new_segments)
-        score+=19456810
+        score+=10
         if score >high_score:
             high_score = score
         pen.clear()
