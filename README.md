@@ -1,8 +1,8 @@
 # Snake game Project
 ## snake game using turtle and Pygame module in python 
 
-##controls
-**W** - *Move Forward*
-**S** - *Move Backward*
-**D** - *Move Right*
-**A** - *Move Left*
+## controls <br>
+**W** - *Move Forward* <br>
+**S** - *Move Backward* <br>
+**D** - *Move Right* <br> 
+**A** - *Move Left* <br>
