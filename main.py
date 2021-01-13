@@ -17,22 +17,31 @@ class Direct:
     def go_right(self):
         if head.direction != "left":
             head.direction = "right" 
+dr=Direct()
 # For move
 class Move():
     def move(self):
         if head.direction == "up":
             y=head.ycor()
             head.sety(y + 20)
+            head.setheading(90)
+            
         if head.direction == "down":
             y=head.ycor()
             head.sety(y - 20)
+            head.setheading(270)
+            
         if head.direction == "left":
             x=head.xcor()
             head.setx(x -20)
+            head.setheading(180)
+            
         if head.direction == "right":
             x=head.xcor()
             head.setx(x + 20)
-
+            head.setheading(360)
+            
+mv=Move()
 delay =0.1
 score=0
 try:
@@ -64,7 +73,7 @@ pen.write("SCORE =0 \nHIGHSCORE =0\n", move=False, align="center",font=('Arial',
 pen.hideturtle()
 # Border
 border=turtle.Turtle()
-border.color("white")
+border.color("black")
 border.penup()
 border.setposition(-450,-275)
 border.speed(0)
@@ -80,7 +89,8 @@ border.hideturtle()
 
 # Snake Head
 head = turtle.Turtle()
-head.shape("circle")
+head.shape("turtle")
+head.shapesize(1.1,1.1)
 head.fillcolor("red")
 head.pencolor("#99004d")
 head.speed(0.001)
@@ -89,15 +99,16 @@ head.goto(10,10)
 head.direction="stop"
 # food 
 food = turtle.Turtle()
-food.shape("turtle")
+food.shape("square")
+food.shapesize(0.8,0.8)
 food.fillcolor("#0000ff")
 food.pencolor("red")
 food.speed(0)
 food.penup()
 food.goto(0,100)
 segments =[]
-mv=Move()
-dr=Direct()
+
+
 win.listen()
 win.onkeypress(dr.go_up,"w")        
 win.onkeypress(dr.go_right,"d")        
