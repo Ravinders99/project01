@@ -60,11 +60,11 @@ pen.speed(0)
 pen.color("black")
 pen.penup()
 pen.goto(220,150)
-pen.write("SCORE =0 \nHIGHSCORE =0", move=False, align="center",font=('Arial',8, 'bold'))
+pen.write("SCORE =0 \nHIGHSCORE =0\n", move=False, align="center",font=('Arial',8, 'bold'))
 pen.hideturtle()
 # Border
 border=turtle.Turtle()
-border.color("black")
+border.color("white")
 border.penup()
 border.setposition(-450,-275)
 border.speed(0)
@@ -74,6 +74,7 @@ for size in range(2):
     border.lt(90)
     border.fd(550)
     border.lt(90)
+
 border.hideturtle()
 
 
@@ -101,7 +102,7 @@ win.listen()
 win.onkeypress(dr.go_up,"w")        
 win.onkeypress(dr.go_right,"d")        
 win.onkeypress(dr.go_down,"s")        
-win.onkeypress(dr.go_left,"a")               
+win.onkeypress(dr.go_left,"a")
 # Main game loop
 while True:
     win.update()
