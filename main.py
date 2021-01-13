@@ -68,18 +68,19 @@ pen =turtle.Turtle()
 pen.speed(0)
 pen.color("black")
 pen.penup()
-pen.goto(220,150)
+pen.goto(215,150)
 pen.write("SCORE =0 \nHIGHSCORE =0\n", move=False, align="center",font=('Arial',8, 'bold'))
 pen.hideturtle()
 # Border
 border=turtle.Turtle()
-border.color("black")
+border.color("white")
 border.penup()
 border.setposition(-450,-275)
 border.speed(0)
 border.pendown()
+border.pensize(3)
 for size in range(2):
-    border.fd(650)
+    border.fd(645)
     border.lt(90)
     border.fd(550)
     border.lt(90)
@@ -119,7 +120,7 @@ while True:
     win.update()
     # score 
     # for chechking for barrier
-    if head.xcor()> 190 or head.xcor()<-450 or head.ycor() > 260 or head.ycor() <-260:       
+    if head.xcor()> 180 or head.xcor()<-450 or head.ycor() > 260 or head.ycor() <-260:       
         pygame.mixer.music.load("./sound/game_over_sms.mp3")
         pygame.mixer.music.play()
         time.sleep(1.5)
