@@ -21,15 +21,18 @@ dr=Direct()
 # For move
 class Move():
     def move(self):
+        
+        if head.direction == "down":
+            y=head.ycor()
+            head.sety(y - 20)
+            head.setheading(270)
+            
         if head.direction == "up":
             y=head.ycor()
             head.sety(y + 20)
             head.setheading(90)
             
-        if head.direction == "down":
-            y=head.ycor()
-            head.sety(y - 20)
-            head.setheading(270)
+        
             
         if head.direction == "left":
             x=head.xcor()
@@ -48,14 +51,14 @@ try:
     with open('highscore.txt', 'r') as f:
         high_score = int(f.readline())
         f.seek(0) 
-        # print(high_score)d
+        print(high_score)
 except:
     high_score = 0
 pygame.mixer.init()
 pygame.mixer.music.load("./sound/gta_san_andreas.mp3")
 pygame.mixer.music.play(1000)
 # background image
-# bg = pygame.image.load("snake2.jpg")
+bg = pygame.image.load("snake2.jpg")
 # Screen 
 win = turtle.Screen()
 win.setup(width=900,height=550)
@@ -69,7 +72,7 @@ pen.speed(0)
 pen.color("black")
 pen.penup()
 pen.goto(215,150)
-pen.write("SCORE =0 \nHIGHSCORE =0\n", move=False, align="center",font=('Arial',8, 'bold'))
+pen.write("SCORE =0 \nHIGHSCORE =0\n", move=False, align="center",font=('Arial',14))
 pen.hideturtle()
 # Border
 border=turtle.Turtle()
@@ -101,8 +104,8 @@ head.direction="stop"
 # food 
 food = turtle.Turtle()
 food.shape("square")
-food.shapesize(0.8,0.8)
-food.fillcolor("#0000ff")
+food.shapesize(0.6,0.6)
+food.fillcolor("#0008ff")
 food.pencolor("red")
 food.speed(0)
 food.penup()
