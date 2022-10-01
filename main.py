@@ -12,11 +12,11 @@ class Direct:
         if head.direction != "up":
             head.direction = "down"
     def go_left(self):
-        if head.direction != "right":
-            head.direction = "left"
+        if head.direction == "right":
+            head.direction = "right"
     def go_right(self):
-        if head.direction != "left":
-            head.direction = "right" 
+        if head.direction != "right":
+            head.direction = "left" 
 dr=Direct()
 # For move
 class Move():
