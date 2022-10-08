@@ -22,6 +22,11 @@ dr=Direct()
 class Move():
     def move(self):
         
+                if head.direction == "right":
+            x=head.xcor()
+            head.setx(x + 20)
+            head.setheading(360)
+        
         if head.direction == "down":
             y=head.ycor()
             head.sety(y - 20)
@@ -39,10 +44,6 @@ class Move():
             head.setx(x -20)
             head.setheading(180)
             
-        if head.direction == "right":
-            x=head.xcor()
-            head.setx(x + 20)
-            head.setheading(360)
             
 mv=Move()
 delay =0.1
